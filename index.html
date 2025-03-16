@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .btn { background: #0088cc; color: #fff; padding: 10px 20px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Привіт, <span id="username"></span>!</h1>
+    <button class="btn" id="btn">Натисни мене</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        document.getElementById('username').innerText = tg.initDataUnsafe?.user?.first_name || 'Гість';
+        document.getElementById('btn').addEventListener('click', () => {
+            tg.showAlert("Це Mini App у Telegram!");
+        });
+        tg.expand(); // Робить Web App повноекранним
+    </script>
+</body>
+</html>
